@@ -1,0 +1,8 @@
+.include "enable_rendering.asm"
+.include "disable_rendering.asm"
+.include "update_ppu_mask.asm"
+.include "poll_input.asm"
+.include "render_vram_buffer.asm"
+.include "reset_scroll.asm"
+.include "update_sprites.asm"
+.include "load_vram_segment.asm"
