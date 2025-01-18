@@ -1,41 +1,41 @@
-.proc nmi_handler
-    ; Save registers.
-    pha
-    txa
-    pha
-    tya
-    pha
+	.proc nmi_handler
+	;     Save registers.
+	pha
+	txa
+	pha
+	tya
+	pha
 
-    ; Only continue if next frame is ready
-    lda frame_ready
-    bne Done
+	;   Only continue if next frame is ready
+	lda frame_ready
+	bne Done
 
-    ; Update the sprites
-    jsr update_sprites
-    
-    ; Update the ppu mask
-    jsr update_ppu_mask
+	;   Update the sprites
+	jsr update_sprites
 
-    ; Render background tiles
-    jsr render_vram_buffer
+	;   Update the ppu mask
+	jsr update_ppu_mask
 
-    ; Reset scroll from ppu writes
-    jsr reset_scroll
+	;   Render background tiles
+	jsr render_vram_buffer
 
-    ; Mark that we've handled the start of this frame already.
-    LDA #$01
-    STA frame_ready
+	;   Reset scroll from ppu writes
+	jsr reset_scroll
 
-    ; Increment frame count
-    inc nmi_counter
+	;   Mark that we've handled the start of this frame already.
+	LDA #$01
+	STA frame_ready
 
-    Done:
-        ; Restore registers.
-        pla
-        tay
-        pla
-        tax
-        pla
+	;   Increment frame count
+	inc nmi_counter
 
-        rti
-.endproc
+Done:
+	; Restore registers.
+	pla
+	tay
+	pla
+	tax
+	pla
+
+	rti
+	.endproc

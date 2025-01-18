@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Align Comments in ASM Files",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-c",
+        "find src -name \"*.asm\" -exec python3 align_comments.py {} \\;"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "runOptions": {
+        "runOn": "fileSave"
+      }
+    }
+  ]
+}

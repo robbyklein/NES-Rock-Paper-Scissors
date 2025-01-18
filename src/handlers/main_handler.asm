@@ -1,19 +1,20 @@
-.proc main
-    ; Wait for nmi to finish
-    :
-        lda frame_ready
-        beq :-
+	.proc main
+	;     Wait for nmi to finish
 
-    ; Poll input
-    jsr poll_input
+:
+	lda frame_ready
+	beq :-
 
-    ; move to correct scene    
-    jsr scene_manager
-    
-    ; Complete this frame and have nmi do work
-    lda #$00
-    sta frame_ready
+	;   Poll input
+	jsr poll_input
 
-    ; Infinite
-    jmp main
-.endproc 
+	;   move to correct scene
+	jsr scene_manager
+
+	;   Complete this frame and have nmi do work
+	lda #$00
+	sta frame_ready
+
+	;   Infinite
+	jmp main
+.endproc

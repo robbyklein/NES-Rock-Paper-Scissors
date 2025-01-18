@@ -1,3 +1,3 @@
 .proc irq_handler
-    rti
+rti
 .endproc

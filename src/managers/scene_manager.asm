@@ -1,27 +1,45 @@
 .proc scene_manager
-    ; Grab scene / loaded
-    lda scene_loaded
-    ldx active_scene
+		;Grab scene / loaded
+		lda scene_loaded
+		ldx active_scene
+		cpx next_scene
+		beq switch
+		jsr change_scene
 
-    ; Send to correct section
-    cpx #$01
-    beq Title
+	switch:
+		;Send to correct section
+		cpx #$01
+		beq Intro
+		cpx #$02
+		beq Title
+		cpx #$03
+		beq Play
+		rts
 
-    ; Return if scene not found
-    rts
+	Intro:
+		cmp #$00 ;Check if loaded
+		bne IntroLoaded
+		jsr intro_start ; if not loaded
+		rts
+	IntroLoaded:
+		jsr intro_update
+		rts
 
-    Title:
-      ; Check if loaded
-      cmp #$00
-      bne TitleLoaded
-      
-      ; If its not
-      jsr title_start
-      rts
+	Title:
+		cmp #$00
+		bne TitleLoaded
+		jsr title_start
+		rts
+	TitleLoaded:
+		jsr title_update
+		rts
 
-      ; If it is
-      TitleLoaded:
-          jsr title_update
-          rts
-
+	Play:
+		cmp #$00 ;Check if loaded
+		bne PlayLoaded
+		jsr play_start ; if not loaded
+		rts
+	PlayLoaded:
+		jsr play_update
+		rts
 .endproc

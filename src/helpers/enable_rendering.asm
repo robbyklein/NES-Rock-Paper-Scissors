@@ -1,7 +1,8 @@
 .proc enable_rendering
-  lda #%00011110 
-  sta ppu_mask_next_value
+	lda #%00011110
+	sta PPU_MASK
+	sta ppu_mask_next_value
+	sta ppu_mask_value
 
-  ; Return
-  rts
+	rts
 .endproc

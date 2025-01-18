@@ -6,3 +6,7 @@
 .include "reset_scroll.asm"
 .include "update_sprites.asm"
 .include "load_vram_segment.asm"
+.include "generate_random_number.asm"
+.include "clear_nametable.asm"
+.include "clear_vram_buffer.asm"
+.include "change_scene.asm"
