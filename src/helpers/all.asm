@@ -10,3 +10,5 @@
 .include "clear_nametable.asm"
 .include "clear_vram_buffer.asm"
 .include "change_scene.asm"
+.include "reset_scratch.asm"
+.include "extract_digits.asm"

@@ -27,6 +27,7 @@
   ;Display for 3~ seconds
   lda nmi_counter
   cmp #$40
+	;cmp #$05
   bne done
 
   ;Erase the intro text
