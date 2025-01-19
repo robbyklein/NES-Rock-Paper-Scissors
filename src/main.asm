@@ -12,6 +12,7 @@
 	player_score: .res 1
 	debug: .res 1
 	debug2: .res 1
+	round_result: .res 1
 	random_number: .res 2
 	nmi_counter: .res 1
 	frame_ready: .res 1
@@ -50,9 +51,13 @@
 	PressStartString: .byte "press start"
 	IntroString: .byte "robbyk 2025"
 	PlayBg: .incbin "assets/maps/play.map"
-	Rock: .byte "rock"
-	Paper: .byte "paper"
+	Rock: .byte "rock    "
+	Paper: .byte "paper   "
 	Scissors: .byte "scissors"
+	CpuSelects: .byte "cpu selects "
+	Lose: .byte "you lose  "
+	Win: .byte  "you win   "
+	Draw: .byte "its a draw"
 .segment "VECTORS"
 	.addr nmi_handler, reset_handler, irq_handler
 
